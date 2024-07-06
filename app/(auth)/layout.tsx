@@ -2,11 +2,15 @@ import React from 'react';
 import { ClerkProvider } from "@clerk/nextjs"
 import { Inter } from 'next/font/google';
 import "../globals.css";
+import { Metadata } from 'next';
 
-export const methadata = {
+export const metadata: Metadata = {
   title: "Threads",
-  desription: "A Next.js 14 Meta Threads Application"
-}
+  description: "A Next.js 14 Meta Threads Application",
+  icons: {
+    icon: "/assets/logo.svg",
+  }
+};
 
 const inter = Inter({ subsets: ['latin'] });
 
