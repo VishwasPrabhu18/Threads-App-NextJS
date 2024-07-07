@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.2.2",
+    "@clerk/nextjs": "^4.21.15",
+    "@clerk/themes": "^1.7.5",
     "@uploadthing/react": "^6.7.2",
     "mongoose": "^8.4.5",
     "next": "14.2.4",
