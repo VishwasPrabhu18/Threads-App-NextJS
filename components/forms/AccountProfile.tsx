@@ -10,6 +10,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import * as z from "zod";
@@ -21,7 +22,7 @@ import { useUploadThing } from "@/lib/uploadThing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
 
-interface Props {
+type Props = {
   user: {
     id: string,
     objectId: string,
@@ -42,7 +43,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
   const [files, setFiles] = useState<File[]>([]);
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof userValidation>>({
     resolver: zodResolver(userValidation),
     defaultValues: {
       profile_photo: user?.image || "",
@@ -164,6 +165,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   className="account-form_input no-focus"
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -183,6 +185,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   className="account-form_input no-focus"
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -202,11 +205,12 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   className="account-form_input no-focus"
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
 
-        <Button type="submit" className="bg-primary-500">Submit</Button>
+        <Button type="submit" className="bg-primary-500">{btnTitle}</Button>
       </form>
     </Form>
   )
